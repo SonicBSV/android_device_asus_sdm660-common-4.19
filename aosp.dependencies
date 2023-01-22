@@ -1,14 +1,14 @@
 [
   {
-    "repository"  : "kernel_asus_sdm660",
+    "repository"  : "Asus-Max-Pro-M2/kernel_asus_sdm660",
     "target_path" : "kernel/asus/sdm660",
-    "branch"      : "eleven",
-    "remote"      : "pixel-devices"
+    "branch"      : "thirteen-4.19",
+    "remote"      : "github"
   },
   {
-    "repository": "vendor_asus_sdm660-common",
+    "repository": "Asus-Max-Pro-M2/vendor_asus_sdm660-common",
     "target_path": "vendor/asus/sdm660-common",
-    "branch": "eleven",
-    "remote": "pixel-devices-blobs"
+    "branch": "thirteen",
+    "remote": "github"
   }
 ]
