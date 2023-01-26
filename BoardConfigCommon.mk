@@ -35,6 +35,9 @@ BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
 # Bootloader
 TARGET_NO_BOOTLOADER := true
 
+# Build
+BUILD_BROKEN_DUP_RULES := true
+
 # Camera
 BOARD_QTI_CAMERA_32BIT_ONLY := true
 USE_DEVICE_SPECIFIC_CAMERA := true
