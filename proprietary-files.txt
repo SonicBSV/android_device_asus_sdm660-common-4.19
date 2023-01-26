@@ -490,6 +490,28 @@ vendor/bin/pm-proxy|3182c937d93cc02c6721c053f57fc6794ad7edb3
 vendor/bin/pm-service|d41dabf5e4830f93b267d668d37e72aedae48163
 vendor/lib64/libperipheral_client.so|18796ea27c31bd39946f23f2b4173bafd26d9216
 
+# Perf - from S62Pro RKQ1.210406.002
+vendor/bin/hw/vendor.qti.hardware.perf@2.2-service
+vendor/etc/init/vendor.qti.hardware.perf@2.2-service.rc
+vendor/lib/libperfconfig.so
+vendor/lib/libperfgluelayer.so
+vendor/lib/libqti-perfd-client.so
+vendor/lib/libqti-perfd.so
+vendor/lib/libqti-util.so
+vendor/lib64/libperfconfig.so
+vendor/lib64/libperfgluelayer.so
+vendor/lib64/libqti-perfd-client.so
+vendor/lib64/libqti-perfd.so
+vendor/lib64/libqti-util.so
+
+# Perf (configs) - from S62Pro RKQ1.210406.002
+vendor/etc/perf/commonresourceconfigs.xml
+vendor/etc/perf/commonsysnodesconfigs.xml
+vendor/etc/perf/perfboostsconfig.xml
+vendor/etc/perf/perfconfigstore.xml
+vendor/etc/perf/targetconfig.xml
+vendor/etc/perf/targetresourceconfigs.xml
+
 # QCC VND HAL - from LA.UM.9.12.r1-10800-SMxx50.0
 vendor/bin/hw/vendor.qti.hardware.qccvndhal@1.0-service|7fc59359c94e5977cb549e4f9d56062bb9ecbc84
 vendor/etc/init/vendor.qti.hardware.qccvndhal@1.0-service.rc|afeb332a4750a11587658fcc9a75a27f63bbccdd

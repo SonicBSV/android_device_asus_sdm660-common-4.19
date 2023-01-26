@@ -631,6 +631,15 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <instance>qccvndhal</instance>
         </interface>
     </hal> <!-- QCC HAL Service -->
+    <hal format="hidl">
+        <name>vendor.qti.hardware.perf</name>
+        <transport>hwbinder</transport>
+        <version>2.2</version>
+        <interface>
+            <name>IPerf</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
     <sepolicy>
         <version>33.0</version>
     </sepolicy>
