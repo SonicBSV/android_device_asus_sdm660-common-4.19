@@ -26,7 +26,6 @@ LOCAL_SHARED_LIBRARIES := \
     libaudioroute \
     libdl \
     libaudioutils \
-    libhwbinder \
     libhidlbase \
     libprocessgroup \
     libutils \
@@ -39,10 +38,10 @@ LOCAL_C_INCLUDES += \
     system/media/audio_utils/include \
     $(call include-path-for, audio-effects) \
     $(call include-path-for, audio-route) \
-    device/asus/sdm660-common/qcom-caf/audio/hal \
-    device/asus/sdm660-common/qcom-caf/audio/hal/msm8974 \
-    device/asus/sdm660-common/qcom-caf/audio/hal/audio_extn \
-    device/asus/sdm660-common/qcom-caf/audio/hal/voice_extn \
+    $(call project-path-for,qcom-audio)/hal \
+    $(call project-path-for,qcom-audio)/hal/msm8974 \
+    $(call project-path-for,qcom-audio)/hal/audio_extn \
+    $(call project-path-for,qcom-audio)/hal/voice_extn \
     $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/techpack/audio/include
 
 LOCAL_HEADER_LIBRARIES := generated_kernel_headers
