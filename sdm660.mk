@@ -455,9 +455,6 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/interfaces \
     hardware/google/pixel
 
-QCOM_SOONG_NAMESPACE := \
-    $(DEVICE_PATH)/qcom-caf
-
 # Telephony
 PRODUCT_PACKAGES += \
     ims-ext-common \
