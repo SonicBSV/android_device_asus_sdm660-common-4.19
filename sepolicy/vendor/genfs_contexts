@@ -12,6 +12,8 @@ genfscon sysfs /devices/platform/soc/soc:qcom,gpubw             u:object_r:sysfs
 genfscon sysfs /devices/platform/soc/soc:qcom,cpubw             u:object_r:sysfs_devfreq:s0
 
 # Wakeup Nodes
+genfscon sysfs /devices/platform/soc/c1b7000.i2c/i2c-7/7-0047/wakeup u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/ca0c000.qcom,cci/ca0c000.qcom,cci:qcom,camera@[0-9]/video[0-9]linux/video[0-9]/wakeup u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/wakeup/wakeup[0-9][0-9]/active_count u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/wakeup/wakeup[0-9][0-9]/active_time_ms u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/virtual/wakeup/wakeup[0-9][0-9]/event_count u:object_r:sysfs_wakeup:s0
