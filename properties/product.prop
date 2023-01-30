@@ -1,3 +1,6 @@
+# Bluetooth
+bluetooth.device.class_of_device=90,2,12
+
 # LMKD
 ro.lmk.low=1001
 ro.lmk.medium=800
