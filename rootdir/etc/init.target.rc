@@ -99,6 +99,7 @@ on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
     mount_all --early /vendor/etc/fstab.qcom
+    swapon_all /vendor/etc/fstab.qcom
     chown root system /mnt/vendor/persist
     chmod 0771 /mnt/vendor/persist
     mkdir /mnt/vendor/persist/data 0700 system system
@@ -468,5 +469,4 @@ service vendor.hvdcp_opti /system/vendor/bin/hvdcp_opti
      group system wakelock
 
 on property:sys.boot_completed=1
-    # Enable EAS
-    write /proc/sys/kernel/sched_energy_aware 1
+    swapon_all /vendor/etc/fstab.qcom
