@@ -2,9 +2,6 @@
 # system.prop for sdm660
 #
 
-# BPF
-ro.kernel.ebpf.supported=true
-
 # Camera
 persist.vendor.camera.privapp.list=org.codeaurora.snapcam
 persist.camera.privapp.list=org.codeaurora.snapcam
