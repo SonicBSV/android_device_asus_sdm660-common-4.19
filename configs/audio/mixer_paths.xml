@@ -372,7 +372,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <ctl name="ADC1 Volume" value="4" />
     <ctl name="ADC2 Volume" value="4" />
     <ctl name="ADC3 Volume" value="4" />
-    <ctl name="DEC1 Volume" value="84" />
+    <ctl name="DEC1 Volume" value="92" />
     <ctl name="DEC2 Volume" value="84" />
     <ctl name="DEC3 Volume" value="84" />
     <ctl name="DEC4 Volume" value="84" />
@@ -2269,6 +2269,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <ctl name="INT0_MI2S_RX Channels" value="Two" />
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RDAC2 MUX" value="RX1" />
+        <ctl name="RX1 Digital Volume" value="92" />
         <ctl name="EAR PA Gain" value="POS_6_DB" />
         <ctl name="EAR_S" value="Switch" />
     </path>
@@ -2364,14 +2365,26 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
     <path name="voice-headphones">
         <path name="headphones" />
+        <ctl name="RX1 Digital Volume" value="84" />
+        <ctl name="RX2 Digital Volume" value="84" />
     </path>
 
     <path name="voice-line">
         <path name="voice-headphones" />
     </path>
 
+    <path name="voice-headset">
+        <path name="headphones" />
+        <ctl name="RX1 Digital Volume" value="84" />
+        <ctl name="RX2 Digital Volume" value="84" />
+    </path>
+
     <path name="voice-headset-mic">
         <path name="headset-mic" />
+    </path>
+
+    <path name="voice-headset">
+        <path name="headphones" />
     </path>
 
     <path name="speaker-and-headphones">
