@@ -3,8 +3,6 @@ af.fast_track_multiplier=1
 audio.deep_buffer.media=true
 audio.offload.min.duration.secs=30
 audio.offload.video=true
-audio.sys.noisy.broadcast.delay=600
-audio.sys.offload.pstimeout.secs=3
 persist.vendor.audio.fluence.voicecall=true
 persist.vendor.audio.fluence.voicecomm=true
 persist.vendor.audio.fluence.voicerec=false
@@ -105,7 +103,6 @@ ro.crypto.volume.options=::v2
 # Display
 debug.sf.enable_hwc_vds=1
 debug.sf.hw=1
-persist.hwc.mdpcomp.enable=true
 ro.hardware.egl=adreno
 ro.hardware.vulkan=adreno
 ro.opengles.version=196610
@@ -115,19 +112,10 @@ vendor.display.disable_rotator_downscale=1
 drm.service.enabled=true
 
 # FM
-vendor.hw.fm.init=0
 vendor.fm.a2dp.conc.disabled=false
 
 # FRP
 ro.frp.pst=/dev/block/bootdevice/by-name/frp
-
-# GMS
-ro.com.google.clientidbase.ms=android-asus-tpin
-ro.com.google.rlzbrandcode=ASUP
-ro.com.google.rlz_ap_whitelist=y0,y5,y6,y7,y9
-
-# NTP Server
-persist.backup.ntpServer=0.pool.ntp.org
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
@@ -148,7 +136,6 @@ ro.telephony.default_network=20,20
 ro.com.android.dataroaming=false
 
 # Radio - IMS
-persist.dbg.ims_volte_enable=1
 persist.dbg.volte_avail_ovr=1
 persist.dbg.vt_avail_ovr=1
 persist.dbg.wfc_avail_ovr=1
