@@ -33,7 +33,10 @@
 #include <string.h>
 #include <sys/sysinfo.h>
 #include <unistd.h>
+#include <vector>
 
+#include <android-base/strings.h>
+#include <android-base/file.h>
 #include <android-base/properties.h>
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
@@ -47,15 +50,36 @@ using std::string;
 string heapstartsize, heapgrowthlimit, heapsize,
        heapminfree, heapmaxfree, heaptargetutilization;
 
-void property_override(string prop, string value)
-{
-    auto pi = (prop_info*) __system_property_find(prop.c_str());
+std::vector<std::string> ro_props_default_source_order = {
+    "",
+    "odm.",
+    "product.",
+    "system.",
+    "system_ext."
+    "vendor.",
+    "vendor_dlkm.",
+};
 
-    if (pi != nullptr)
-        __system_property_update(pi, value.c_str(), value.size());
-    else
-        __system_property_add(prop.c_str(), prop.size(), value.c_str(), value.size());
+void property_override(char const prop[], char const value[], bool add = true)
+{
+    prop_info *pi;
+
+    pi = (prop_info *) __system_property_find(prop);
+    if (pi)
+        __system_property_update(pi, value, strlen(value));
+    else if (add)
+        __system_property_add(prop, strlen(prop), value, strlen(value));
 }
+
+void set_ro_build_prop(const std::string &prop, const std::string &value) {
+    for (const auto &source : ro_props_default_source_order) {
+        auto prop_name = "ro." + source + "build." + prop;
+        if (source == "")
+            property_override(prop_name.c_str(), value.c_str());
+        else
+            property_override(prop_name.c_str(), value.c_str(), false);
+    }
+};
 
 void check_device()
 {
@@ -105,14 +129,23 @@ void NFC_check()
 }
 
 void vendor_load_properties()
-{
+ {
+    std::string fingerprint;
+    std::string description;
+
+    fingerprint = "google/redfin/redfin:13/TQ1A.230105.001/9292298:user/release-keys";
+    description = "sdm660_64-user 10 QKQ1 72 release-keys";
+
+    set_ro_build_prop("fingerprint", fingerprint);
+    property_override("ro.build.description", description.c_str());
+    
     check_device();
     NFC_check();
 
-    property_override("dalvik.vm.heapstartsize", heapstartsize);
-    property_override("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
-    property_override("dalvik.vm.heapsize", heapsize);
-    property_override("dalvik.vm.heaptargetutilization", heaptargetutilization);
-    property_override("dalvik.vm.heapminfree", heapminfree);
-    property_override("dalvik.vm.heapmaxfree", heapmaxfree);
+    property_override("dalvik.vm.heapstartsize", heapstartsize.c_str());
+    property_override("dalvik.vm.heapgrowthlimit", heapgrowthlimit.c_str());
+    property_override("dalvik.vm.heapsize", heapsize.c_str());
+    property_override("dalvik.vm.heaptargetutilization", heaptargetutilization.c_str());
+    property_override("dalvik.vm.heapminfree", heapminfree.c_str());
+    property_override("dalvik.vm.heapmaxfree", heapmaxfree.c_str());
 }
