@@ -16,5 +16,5 @@ allow system_server sysfs:file { getattr };
 
 allow system_server vendor_display_notch_prop:file { getattr  map  open  read };
 
-# power
-allow system_server sysfs_battery_supply:file { read open getattr };
+# Smart charging
+allow system_server sysfs_battery_supply:file rw_file_perms;

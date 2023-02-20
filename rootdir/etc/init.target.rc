@@ -374,6 +374,10 @@ on charger
     setprop sys.usb.configfs 1
     start vendor.power_off_alarm
 
+# Smart Charging
+    chown system system /sys/class/power_supply/battery/charging_enabled
+    chmod 0666 /sys/class/power_supply/battery/charging_enabled
+
 #
 #service nqs /system/bin/nqs
 #    class late_start
