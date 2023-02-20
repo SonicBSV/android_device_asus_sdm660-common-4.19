@@ -182,6 +182,10 @@ ro.surface_flinger.set_idle_timer_ms=9000
 # UBWC
 vendor.video.disable.ubwc=1
 
+# USB
+vendor.usb.diag.func.name=diag
+vendor.usb.use_ffs_mtp=0
+
 # Zram-writeback
 ro.zram.mark_idle_delay_mins=60
 ro.zram.first_wb_delay_mins=180
