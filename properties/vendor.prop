@@ -1,3 +1,15 @@
+# ART
+pm.dexopt.ab-ota=speed-profile
+dalvik.vm.dex2oat64.enabled=true
+dalvik.vm.boot-dex2oat-cpu-set=0,1,2,3,4,5,6,7
+dalvik.vm.boot-dex2oat-threads=8
+dalvik.vm.dex2oat-cpu-set=0,1,2,3,4,5,6,7
+dalvik.vm.dex2oat-filter=speed
+dalvik.vm.dex2oat-threads=8
+dalvik.vm.image-dex2oat-cpu-set=0,1,2,3,4,5,6,7
+dalvik.vm.image-dex2oat-filter=speed
+dalvik.vm.image-dex2oat-threads=8
+
 # Audio
 af.fast_track_multiplier=1
 audio.deep_buffer.media=true
@@ -118,6 +130,7 @@ ro.frp.pst=/dev/block/bootdevice/by-name/frp
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
+ro.vendor.perf.scroll_opt=true
 
 # Radio
 persist.radio.multisim.config=dsds
