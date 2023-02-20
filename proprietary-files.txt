@@ -22,9 +22,6 @@ vendor/lib64/libfastcvopt.so
 vendor/lib64/libmdsprpc.so
 vendor/lib64/libsdsprpc.so
 
-# ADSP Modules - from evolve QKQ1.200623.002 +
-vendor/lib/rfsa/adsp/libscveBlobDescriptor_skel.so|99752b14bc669589f598b2c555af96834147e41e
-
 # ADSP Modules - from S62Pro RKQ1.210406.002
 vendor/lib/rfsa/adsp/libFastRPC_AUE_Forward_skel.so
 vendor/lib/rfsa/adsp/libFastRPC_UTF_Forward_800h_skel.so
@@ -36,13 +33,16 @@ vendor/lib/rfsa/adsp/libapps_mem_heap.so
 vendor/lib/rfsa/adsp/libdspCV_skel.so
 vendor/lib/rfsa/adsp/libscveObjectSegmentation_skel.so
 vendor/lib/rfsa/adsp/libvpp_svc_skel.so
+vendor/lib/rfsa/adsp/libhexagon_nn_skel.so
 vendor/lib/rfsa/adsp/libfastcvadsp.so|a4ded032d4ec44575d474af9e6a74ed5d8dad26a
 vendor/lib/rfsa/adsp/libfastcvadsp_skel.so|a06a3f52e89d219d2da0c7205e714cd7429b267c
 vendor/lib/rfsa/adsp/libscveT2T_skel.so|487f830aca26c85ef79c8b599b2f03668ab732b5
 
-# ADSP-Modules-AptX +
-vendor/lib/rfsa/adsp/capi_v2_aptX_Classic.so
-vendor/lib/rfsa/adsp/capi_v2_aptX_HD.so
+# Audio modules - from S62Pro RKQ1.210406.002
+vendor/lib/libhdmipassthru.so
+vendor/lib64/libhdmipassthru.so
+vendor/lib/libssrec.so
+vendor/lib64/libssrec.so
 
 # Alarm - from S62Pro RKQ1.210406.002
 vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service
@@ -60,7 +60,6 @@ vendor/lib/libcdsp_default_listener.so
 vendor/lib/libcdsprpc.so
 system_ext/lib/libcdsprpc_system.so
 system_ext/lib64/libcdsprpc_system.so
-vendor/etc/init/vendor.qti.cdsprpc-service.rc
 vendor/lib/libsysmon_cdsp_skel.so
 vendor/lib64/libcdsp_default_listener.so
 vendor/lib64/libcdsprpc.so
@@ -81,6 +80,7 @@ vendor/lib/libaudioalsa.so
 vendor/lib/libaudioparsers.so
 vendor/lib/libdrc.so
 vendor/lib/libqtigef.so
+vendor/lib/liblistensoundmodel2.so
 system_ext/etc/permissions/audiosphere.xml
 -system_ext/framework/audiosphere.jar
 vendor/lib64/libacdb-fts.so
@@ -91,6 +91,7 @@ vendor/lib64/libaudcal.so
 vendor/lib64/libaudioalsa.so
 vendor/lib64/libaudioparsers.so
 vendor/lib64/libqtigef.so
+vendor/lib64/liblistensoundmodel2.so
 
 # Audio FX modules - from S62Pro RKQ1.210406.002
 vendor/lib/soundfx/libasphere.so
@@ -118,10 +119,6 @@ vendor/lib64/vendor.qti.hardware.fm@1.0.so
 # Bluetooth-Audio - from S62Pro RKQ1.210406.002
 vendor/lib64/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so
 vendor/lib64/hw/vendor.qti.hardware.btconfigstore@2.0-impl.so
-
-# Bluetooth (aptX) - from crosshatch-user 10 QP1A.190711.020 5800535 release-keys +
-product/lib64/libaptXHD_encoder.so|e13fa70c97caaa24d061678bdee608eb8850a69e
-product/lib64/libaptX_encoder.so|df1c89d7af1bb35808d5fe3496b04ba066c10cbc
 
 # Camera-sensors - from S62Pro RKQ1.210406.002
 vendor/lib/libmmcamera_ppeiscore.so
@@ -379,6 +376,7 @@ vendor/lib/libgsl.so
 vendor/lib/libllvm-glnext.so
 vendor/lib/libllvm-qcom.so
 vendor/lib/librs_adreno.so
+vendor/lib/libgpudataproducer.so
 vendor/lib64/egl/eglSubDriverAndroid.so
 vendor/lib64/egl/libEGL_adreno.so
 vendor/lib64/egl/libGLESv1_CM_adreno.so
@@ -394,6 +392,7 @@ vendor/lib64/libgsl.so
 vendor/lib64/libllvm-glnext.so
 vendor/lib64/libllvm-qcom.so
 vendor/lib64/librs_adreno.so
+vendor/lib64/libgpudataproducer.so
 
 # Graphics (HDR) - from S62Pro RKQ1.210406.002
 vendor/lib/libhdr_tm.so
@@ -538,8 +537,6 @@ vendor/lib64/libqdma_file_agent.so
 vendor/bin/qmipriod|07515dc1c7af062251e7020899b2f87ddb5a58fa
 vendor/etc/init/qmipriod.debug.rc|94d421875f35fdcb170070f20a221466ad87f97e
 vendor/etc/init/qmipriod.rc|94500dd5dc514fbb506ad8259a69ca57f4db72d6
-vendor/lib64/libqmi_csvt_srvc.so|9ad1a5c82020bca755cf7a41a2f300464cbca041
-vendor/lib64/libqmiextservices.so|67c3409090740a9bbdcfedce97353bf4773007fe
 
 # QMI - from S62Pro RKQ1.210406.002
 vendor/bin/irsc_util
