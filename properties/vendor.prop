@@ -52,7 +52,7 @@ vendor.audio.feature.hwdep_cal.enable=false
 vendor.audio.feature.incall_music.enable=false
 vendor.audio.feature.multi_voice_session.enable=true
 vendor.audio.feature.keep_alive.enable=false
-vendor.audio.feature.kpi_optimize.enable=false
+vendor.audio.feature.kpi_optimize.enable=true
 vendor.audio.feature.maxx_audio.enable=false
 vendor.audio.feature.ras.enable=true
 vendor.audio.feature.record_play_concurency.enable=false
@@ -95,7 +95,7 @@ persist.vendor.qcom.bluetooth.soc=cherokee
 # Camera
 persist.vendor.camera.eis.enable=1
 persist.vendor.camera.expose.aux=1
-persist.vendor.camera.is_type=5
+persist.vendor.camera.is_type=4
 persist.vendor.camera.mpo.disabled=1
 persist.vendor.camera.preview.ubwc=0
 persist.vendor.camera.HAL3.enabled=1
@@ -184,7 +184,7 @@ vendor.video.disable.ubwc=1
 
 # USB
 vendor.usb.diag.func.name=diag
-vendor.usb.use_ffs_mtp=0
+persist.vendor.usb.config=diag,serial_cdev,rmnet,adb
 
 # Zram-writeback
 ro.zram.mark_idle_delay_mins=60
