@@ -3,9 +3,9 @@ ifneq ($(BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE),)
 # Set required flags
 GNSS_CFLAGS := \
     -Werror \
-    -Wno-unused-parameter \
+    -Wno-error=unused-parameter \
     -Wno-error=macro-redefined \
-    -Wno-reorder \
+    -Wno-error=reorder \
     -Wno-error=missing-braces \
     -Wno-error=self-assign \
     -Wno-error=enum-conversion \
@@ -13,7 +13,7 @@ GNSS_CFLAGS := \
     -Wno-error=null-arithmetic \
     -Wno-error=null-conversion \
     -Wno-error=parentheses-equality \
-    -Wno-undefined-bool-conversion \
+    -Wno-error=undefined-bool-conversion \
     -Wno-error=tautological-compare \
     -Wno-error=switch \
     -Wno-error=date-time
