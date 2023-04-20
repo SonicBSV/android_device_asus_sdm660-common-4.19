@@ -490,6 +490,7 @@ vendor/lib64/libmmosal.so
 
 # NFC +
 vendor/lib/libpn553_fw.so
+vendor/bin/nqnfcinfo
 
 # Peripheral manager - from S62Pro RKQ1.210406.002
 vendor/bin/pm-proxy

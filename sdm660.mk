@@ -286,15 +286,21 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf \
     $(COMMON_PATH)/configs/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
 
-PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.2.vendor \
-    android.hardware.nfc@1.2-service
+PRODUCT_SOONG_NAMESPACES += \
+    vendor/nxp/opensource/pn5xx
+
+TARGET_USES_NQ_NFC := true
 
 PRODUCT_PACKAGES += \
+    NQNfcNci \
+    hal_libnfc \
+    vendor.nxp.hardware.nfc@2.0-service \
+    vendor.nxp.nxpnfclegacy@1.0 \
+    nfc_nci.nqx.default.hw \
     com.android.nfc_extras \
-    NfcNci \
-    SecureElement \
-    Tag
+    com.nxp.nfc.nq \
+    Tag \
+    SecureElement
 
 # Neuralnetworks
 PRODUCT_PACKAGES += \
