@@ -184,7 +184,7 @@ vendor.video.disable.ubwc=1
 
 # USB
 vendor.usb.diag.func.name=diag
-persist.vendor.usb.config=diag,serial_cdev,rmnet,adb
+vendor.usb.use_ffs_mtp=0
 
 # Zram-writeback
 ro.zram.mark_idle_delay_mins=60
