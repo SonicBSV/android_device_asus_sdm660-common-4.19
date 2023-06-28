@@ -147,6 +147,7 @@ BOARD_USES_QCOM_HARDWARE := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 
 # Releasetools
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_asus
