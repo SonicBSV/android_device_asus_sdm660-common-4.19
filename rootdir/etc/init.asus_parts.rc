@@ -15,7 +15,7 @@
 #
 
 on boot
-    # XiaomiParts
+    # ZenParts
     chown system system /sys/module/qti_haptics/parameters/vmax_mv_override
     chmod 0660 /sys/module/qti_haptics/parameters/vmax_mv_override
     chown system system /sys/module/hall/parameters/hall_toggle
