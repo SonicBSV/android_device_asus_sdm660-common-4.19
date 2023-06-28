@@ -513,6 +513,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.lineage.touch@1.0-service.asus_sdm660
 
+# Shipping API level
+PRODUCT_SHIPPING_API_LEVEL := 27
+
 # Trust HAL
 PRODUCT_PACKAGES += \
     vendor.lineage.trust@1.0-service
