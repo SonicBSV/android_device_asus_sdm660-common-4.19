@@ -47,12 +47,77 @@ target=`getprop ro.board.platform`
 # Override USB default composition
 #
 # If USB persist config not set, set default configuration
-build_type=`getprop ro.build.type`
-
-if [ "$build_type" != "user" ]; then
-	setprop persist.vendor.usb.config diag,serial_cdev,rmnet,adb
-	setprop persist.sys.usb.config diag,serial_cdev,rmnet,adb
-	setprop sys.usb.config diag,serial_cdev,rmnet,adb
+if [ "$(getprop persist.vendor.usb.config)" == "" -a "$(getprop ro.build.type)" != "user" -a \
+	"$(getprop init.svc.vendor.usb-gadget-hal-1-0)" != "running" ]; then
+    if [ "$esoc_name" != "" ]; then
+	  setprop persist.vendor.usb.config diag,diag_mdm,qdss,qdss_mdm,serial_cdev,dpl,rmnet,adb
+    else
+	  case "$(getprop ro.baseband)" in
+	      "apq")
+	          setprop persist.vendor.usb.config diag,adb
+	      ;;
+	      *)
+	      case "$soc_hwplatform" in
+	          "Dragon" | "SBC")
+	              setprop persist.vendor.usb.config diag,adb
+	          ;;
+                  *)
+		  case "$soc_machine" in
+		    "SA")
+	              setprop persist.vendor.usb.config diag,adb
+		    ;;
+		    *)
+	            case "$target" in
+	              "msm8996")
+	                  setprop persist.vendor.usb.config diag,serial_cdev,serial_tty,rmnet_ipa,mass_storage,adb
+		      ;;
+	              "msm8909")
+		          setprop persist.vendor.usb.config diag,serial_smd,rmnet_qti_bam,adb
+		      ;;
+	              "msm8937")
+			    if [ -d /config/usb_gadget ]; then
+				       setprop persist.vendor.usb.config diag,serial_cdev,rmnet,dpl,adb
+			    else
+			               case "$soc_id" in
+				               "313" | "320")
+				                  setprop persist.vendor.usb.config diag,serial_smd,rmnet_ipa,adb
+				               ;;
+				               *)
+				                  setprop persist.vendor.usb.config diag,serial_smd,rmnet_qti_bam,adb
+				               ;;
+			               esac
+			    fi
+		      ;;
+	              "msm8953")
+			      if [ -d /config/usb_gadget ]; then
+				      setprop persist.vendor.usb.config diag,serial_cdev,rmnet,dpl,adb
+			      else
+				      setprop persist.vendor.usb.config diag,serial_smd,rmnet_ipa,adb
+			      fi
+		      ;;
+	              "msm8998" | "sdm660" | "apq8098_latv")
+		          setprop persist.vendor.usb.config diag,serial_cdev,rmnet,adb
+		      ;;
+	              "sdm845" | "sdm710")
+		          setprop persist.vendor.usb.config diag,serial_cdev,rmnet,dpl,adb
+		      ;;
+	              "msmnile" | "sm6150" | "trinket" | "lito" | "atoll" | "bengal" | "lahaina" | "holi")
+			  setprop persist.vendor.usb.config diag,serial_cdev,rmnet,dpl,qdss,adb
+		      ;;
+	              "monaco")
+		          setprop persist.vendor.usb.config diag,qdss,rmnet,adb
+		      ;;
+	              *)
+		          setprop persist.vendor.usb.config diag,adb
+		      ;;
+                    esac
+		    ;;
+		  esac
+	          ;;
+	      esac
+	      ;;
+	  esac
+      fi
 fi
 
 # This check is needed for GKI 1.0 targets where QDSS is not available
