@@ -387,5 +387,5 @@
     </string-array>
 
     <!-- Specify if the fingerprint hardware support gestures-->
-    <bool name="config_fingerprintSupportsGestures">true</bool>
+    <bool name="config_fingerprintSupportsGestures">false</bool>
 </resources>
