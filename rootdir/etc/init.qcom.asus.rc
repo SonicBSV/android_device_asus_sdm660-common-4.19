@@ -42,7 +42,7 @@ on boot
     chown system system /proc/tpd_gesture
     chmod 0660 /proc/tpd_gesture
 
-service vendor.nfc_hal_service /vendor/bin/hw/android.hardware.nfc@1.2-service
+service nqnfc_2_0_hal_service /vendor/bin/hw/vendor.nxp.hardware.nfc@2.0-service
     override
     class hal
     user nfc
@@ -50,4 +50,4 @@ service vendor.nfc_hal_service /vendor/bin/hw/android.hardware.nfc@1.2-service
     disabled
 
 on property:ro.hq.support.nfc=1
-    enable vendor.nfc_hal_service
+    enable nqnfc_2_0_hal_service
