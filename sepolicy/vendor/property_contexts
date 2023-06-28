@@ -1,6 +1,8 @@
 # Camera
 persist.vendor.camera.hdring                  u:object_r:vendor_camera_prop:s0
 persist.vendor.camera.pickres.prop_hdr        u:object_r:vendor_camera_prop:s0
+ro.camera.req.fmq.                            u:object_r:exported_default_prop:s0
+ro.camera.res.fmq.                            u:object_r:exported_default_prop:s0
 
 # Dirac
 persist.audio.dirac.                    u:object_r:dirac_prop:s0
