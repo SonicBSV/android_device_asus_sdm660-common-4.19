@@ -151,6 +151,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/displayconfig/display_id_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_id_0.xml
 
+# Disable buffer age (b/74534157)
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.hwui.use_buffer_age=true
+
 # Doze mode
 PRODUCT_PACKAGES += \
     Doze
