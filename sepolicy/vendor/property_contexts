@@ -16,3 +16,6 @@ ro.hq.support.nfc                             u:object_r:nfc_sensors_prop:s0
 
 # Perf
 vendor.target.init.complete     u:object_r:vendor_mpctl_prop:s0
+
+# Aware
+ro.vendor.aware_available          u:object_r:vendor_aware_available_prop:s0
