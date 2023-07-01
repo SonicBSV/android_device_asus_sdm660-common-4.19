@@ -294,21 +294,14 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf \
     $(COMMON_PATH)/configs/nfc/libnfc-nxp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
 
-PRODUCT_SOONG_NAMESPACES += \
-    vendor/nxp/opensource/pn5xx
-
-TARGET_USES_NQ_NFC := true
+PRODUCT_PACKAGES += \
+    android.hardware.nfc@1.2-service
 
 PRODUCT_PACKAGES += \
-    NQNfcNci \
-    hal_libnfc \
-    vendor.nxp.hardware.nfc@2.0-service \
-    vendor.nxp.nxpnfclegacy@1.0 \
-    nfc_nci.nqx.default.hw \
     com.android.nfc_extras \
-    com.nxp.nfc.nq \
-    Tag \
-    SecureElement
+    NfcNci \
+    SecureElement \
+    Tag
 
 # OEM Unlock reporting
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
