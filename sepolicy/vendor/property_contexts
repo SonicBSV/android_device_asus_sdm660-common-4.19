@@ -19,3 +19,8 @@ vendor.target.init.complete     u:object_r:vendor_mpctl_prop:s0
 
 # Aware
 ro.vendor.aware_available          u:object_r:vendor_aware_available_prop:s0
+
+# Hardware
+ro.hardware.chipname    u:object_r:build_prop:s0
+ro.hardware.alter    u:object_r:build_prop:s0
+ro.hwversion          u:object_r:build_prop:s0
