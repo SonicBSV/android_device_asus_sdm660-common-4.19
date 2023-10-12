@@ -12,18 +12,13 @@ genfscon sysfs /devices/platform/soc/soc:qcom,gpubw             u:object_r:sysfs
 genfscon sysfs /devices/platform/soc/soc:qcom,cpubw             u:object_r:sysfs_devfreq:s0
 
 # Wakeup Nodes
-genfscon sysfs /devices/platform/soc/c1b7000.i2c/i2c-7/7-0047/wakeup u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/platform/soc/ca0c000.qcom,cci/ca0c000.qcom,cci:qcom,camera@[0-9]/video[0-9]linux/video[0-9]/wakeup u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/virtual/wakeup/wakeup[0-80][0-80]/active_count u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/virtual/wakeup/wakeup[0-80][0-80]/active_time_ms u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/virtual/wakeup/wakeup[0-80][0-80]/event_count u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/virtual/wakeup/wakeup[0-80][0-80]/expire_count u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/virtual/wakeup/wakeup[0-80][0-80]/last_change_ms u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/virtual/wakeup/wakeup[0-80][0-80]/max_time_ms u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/virtual/wakeup/wakeup[0-80][0-80]/name u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/virtual/wakeup/wakeup[0-80][0-80]/prevent_suspend_time_ms u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/virtual/wakeup/wakeup[0-80][0-80]/total_time_ms u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/virtual/wakeup/wakeup[0-80][0-80]/wakeup_count u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/c1b7000.i2c/i2c-7/7-0048/wakeup/wakeup[0-80] u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/c1b7000.i2c/i2c-7/7-0048/wakeup/wakeup34 u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/ca0c000.qcom,cci/ca0c000.qcom,cci:qcom,camera@1/video4linux/video3/wakeup58 u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/ca0c000.qcom,cci/ca0c000.qcom,cci:qcom,camera@2/video4linux/video4/wakeup59 u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/ca0c000.qcom,cci/ca0c000.qcom,cci:qcom,camera@2/video4linux/video4/wakeup60 u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/ca0c000.qcom,cci/ca0c000.qcom,cci:qcom,camera@0/video4linux/video2/wakeup57 u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/ca0c000.qcom,cci/ca0c000.qcom,cci:qcom,camera@[0-9]/video4linux/video[0-9]/wakeup[0-80] u:object_r:sysfs_wakeup:s0
 
 # DeviceSettings
 genfscon sysfs /devices/virtual/graphics/fb0/measured_fps                                                                                            u:object_r:sysfs_fpsinfo:s0
