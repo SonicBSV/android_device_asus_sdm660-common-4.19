@@ -5,3 +5,6 @@ vendor_internal_prop(dirac_prop);
 
 # Aware
 vendor_restricted_prop(vendor_aware_available_prop);
+
+#properties for nfc
+vendor_restricted_prop(nfc_nq_prop)
