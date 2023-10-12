@@ -93,12 +93,6 @@
     <string name="fps_info_title">FPS Overlay</string>
     <string name="fps_info_summary">Show overlay with current frames per second</string>
     
-    <!-- Audio amplification -->
-    <string name="audio_amplify">Amplify Audio</string>
-    <string name="earpiece_gain">Earpiece Gain</string>
-    <string name="headphone_gain">Headphone Gain</string>
-    <string name="mic_gain">Microphone Gain</string>
-    
      <!-- Dirac -->
     <string name="audio_title">Dirac</string>
 
