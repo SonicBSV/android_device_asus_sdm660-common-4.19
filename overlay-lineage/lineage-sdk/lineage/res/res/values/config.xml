@@ -83,6 +83,7 @@
         <item>restart</item>
         <item>restart_recovery</item>
         <item>restart_fastboot</item>
+	<item>restart_systemui</item>
     </string-array>
     
     <!-- Default values for LiveDisplay -->
