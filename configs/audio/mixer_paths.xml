@@ -364,8 +364,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <ctl name="EAR PA Gain" value="POS_1P5_DB" />
     <ctl name="EAR PA Boost" value="ENABLE" />
 
-    <ctl name="RX1 Digital Volume" value="102" />
-    <ctl name="RX2 Digital Volume" value="102" />
+    <ctl name="RX1 Digital Volume" value="88" />
+    <ctl name="RX2 Digital Volume" value="88" />
     <ctl name="RX3 Digital Volume" value="88" />
     <ctl name="RX4 Digital Volume" value="88" />
     <ctl name="RX5 Digital Volume" value="88" />
@@ -2200,7 +2200,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <path name="sidetone-iir" />
         <ctl name="RX1 MIX2 INP1" value="IIR1" />
         <ctl name="RX2 MIX2 INP1" value="IIR1" />
-        <ctl name="IIR1 INP1 Volume" value="53" />
+        <ctl name="IIR1 INP1 Volume" value="15" />
     </path>
 
     <path name="sidetone-handset">
@@ -2269,6 +2269,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <ctl name="INT0_MI2S_RX Channels" value="Two" />
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RDAC2 MUX" value="RX1" />
+        <ctl name="RX1 Digital Volume" value="92" />
         <ctl name="EAR SPKR PA Gain" value="G_3_DB" />
         <ctl name="EAR_S" value="Switch" />
     </path>
@@ -2305,8 +2306,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <ctl name="RX2 MIX1 INP1" value="RX2" />
         <ctl name="RDAC2 MUX" value="RX2" />
         <ctl name="RX HPH Mode" value="HD2" />
-        <ctl name="COMP0 RX1" value="1" />
-        <ctl name="COMP0 RX2" value="1" />
         <ctl name="HPHL" value="Switch" />
         <ctl name="HPHR" value="Switch" />
         <ctl name="EAR SPKR PA Gain" value="G_3_DB" />
@@ -2366,6 +2365,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
     <path name="voice-headphones">
         <path name="headphones" />
+        <ctl name="RX1 Digital Volume" value="84" />
+        <ctl name="RX2 Digital Volume" value="84" />
     </path>
 
     <path name="voice-line">
@@ -2374,6 +2375,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
     <path name="voice-headset">
         <path name="headphones" />
+        <ctl name="RX1 Digital Volume" value="84" />
+        <ctl name="RX2 Digital Volume" value="84" />
     </path>
 
     <path name="voice-headset-mic">
