@@ -75,10 +75,6 @@ PRODUCT_PACKAGES += \
     AntHalService-Soong \
     com.dsi.ant@1.0.vendor
 
-# ATRACE_HAL
-PRODUCT_PACKAGES += \
-    android.hardware.atrace@1.0-service
-
 # Boot animation
 TARGET_BOOTANIMATION_HALF_RES := true
 
