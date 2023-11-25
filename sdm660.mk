@@ -399,7 +399,6 @@ PRODUCT_PACKAGES += \
 
 # Perf
 PRODUCT_PACKAGES += \
-   libqti-perfd-client \
    libtflite \
    libtextclassifier_hash \
    vendor.qti.hardware.perf@2.2.vendor
