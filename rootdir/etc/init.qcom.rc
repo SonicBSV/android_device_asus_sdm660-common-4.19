@@ -285,8 +285,8 @@ on post-fs-data
 
     # Mounting of persist is moved to 'on emmc-fs' and 'on fs' sections
     # We chown/chmod /persist again so because mount is run as root + defaults
-    chown root system /mnt/vendor/persist/
-    chmod 0771 /mnt/vendor/persist/
+    chown root system /persist
+    chmod 0771 /persist
     chown system system /persist/WCNSS_qcom_wlan_nv.bin
     chmod 0664 /sys/devices/platform/msm_sdcc.1/polling
     chmod 0664 /sys/devices/platform/msm_sdcc.2/polling
@@ -331,6 +331,8 @@ on post-fs-data
     rm /data/vendor/perfd/default_values
 
     mkdir /data/vendor/secure_element 0777 system system
+
+    mkdir /data/vendor/nfc 0770 nfc nfc
 
     #Create IOP  deamon related dirs
     mkdir /data/vendor/iop 0700 root system
