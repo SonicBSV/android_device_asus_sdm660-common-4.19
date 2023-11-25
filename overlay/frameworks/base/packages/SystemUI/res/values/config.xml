@@ -69,5 +69,5 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <bool name="config_vibrateOnIconAnimation">true</bool>
 
     <!-- Unlock ripple animation -->
-    <bool name="config_enableUnlockRippleAnimation">true</bool>
+    <bool name="config_enableUnlockRippleAnimation">false</bool>
 </resources>
