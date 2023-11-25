@@ -181,10 +181,6 @@ PRODUCT_PACKAGES += \
     qcom.fmradio \
     qcom.fmradio.xml
 
-# Folio
-PRODUCT_PACKAGES += \
-    folio_daemon
-
 # Fwk detect
 PRODUCT_PACKAGES += \
     libqti_vndfwk_detect \
