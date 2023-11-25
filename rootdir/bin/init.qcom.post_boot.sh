@@ -851,15 +851,6 @@ function enable_memory_features()
     fi
 }
 
-function start_hbtp()
-{
-        # Start the Host based Touch processing but not in the power off mode.
-        bootmode=`getprop ro.bootmode`
-        if [ "charger" != $bootmode ]; then
-                start vendor.hbtp
-        fi
-}
-
 case "$target" in
     "msm7201a_ffa" | "msm7201a_surf" | "msm7627_ffa" | "msm7627_6x" | "msm7627a"  | "msm7627_surf" | \
     "qsd8250_surf" | "qsd8250_ffa" | "msm7630_surf" | "msm7630_1x" | "msm7630_fusion" | "qsd8650a_st1x")
@@ -2801,9 +2792,6 @@ case "$target" in
             # enable LPM
             echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled
 
-            # Start cdsprpcd only for sdm660 and disable for sdm630
-            start vendor.cdsprpcd
-
             # Start Host based Touch processing
                 case "$hw_platform" in
                         "MTP" | "Surf" | "RCM" | "QRD" )
@@ -2812,6 +2800,13 @@ case "$target" in
                 esac
             ;;
         esac
+
+        # Start cdsprpcd only for sdm660 and disable for sdm630 and sdm636
+        case "$soc_id" in
+            "317" | "324" | "325" | "326" )
+            start vendor.cdsprpcd
+        esac
+
         #Apply settings for sdm630 and Tahaa
         case "$soc_id" in
             "318" | "327" | "385" )
@@ -2822,6 +2817,9 @@ case "$target" in
                 start_hbtp
                 ;;
             esac
+
+	    # Disable cdsprpcd daemon for sdm630
+	    setprop vendor.fastrpc.disable.cdsprpcd.daemon 1
 
             # Setting b.L scheduler parameters
             echo 85 > /proc/sys/kernel/sched_upmigrate
