@@ -167,10 +167,6 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.4.vendor \
     android.hardware.drm-service.clearkey
 
-# FlipFlap
-PRODUCT_PACKAGES += \
-    FlipFlap
-
 # FM
 PRODUCT_PACKAGES += \
     android.hardware.broadcastradio@1.0-impl

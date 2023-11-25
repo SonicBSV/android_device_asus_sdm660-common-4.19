@@ -330,6 +330,11 @@
     <!-- Whether to select voice/data/sms preference without user confirmation. -->
     <bool name="config_voice_data_sms_auto_fallback">true</bool>
 
+    <!-- Indicate whether closing the lid causes the device to go to sleep and opening
+         it causes the device to wake up.
+         The default is false. -->
+    <bool name="config_lidControlsSleep">true</bool>
+    
     <!-- List of system apps that are allowed to be locked with app lock.
          Use with extreme caution. -->
     <string-array name="config_appLockAllowedSystemApps" translatable="false">
