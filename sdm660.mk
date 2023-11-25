@@ -21,6 +21,10 @@ COMMON_PATH := device/asus/sdm660-common
 PRODUCT_PACKAGES += \
     fs_config_files
 
+# AdGuard CA Root Certificate 
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/rootdir/etc/security/cacerts/0f4ed297.0:$(TARGET_COPY_OUT_SYSTEM)/etc/security/cacerts/0f4ed297.0
+
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@7.1-impl:32 \
