@@ -9,3 +9,7 @@ allow init debugfs_tracing_debug:dir { mounton };
 
 # Smart Charging
 allow init sysfs_battery_supply:file { setattr };
+
+# /proc/last_kmsg
+allow init proc_last_kmsg:file r_file_perms;
+allow init proc_last_kmsg:file setattr;
