@@ -50,16 +50,6 @@ using std::string;
 string heapstartsize, heapgrowthlimit, heapsize,
        heapminfree, heapmaxfree, heaptargetutilization;
 
-std::vector<std::string> ro_props_default_source_order = {
-    "",
-    "odm.",
-    "product.",
-    "system.",
-    "system_ext."
-    "vendor.",
-    "vendor_dlkm.",
-};
-
 void property_override(char const prop[], char const value[], bool add = true)
 {
     prop_info *pi;
@@ -70,16 +60,6 @@ void property_override(char const prop[], char const value[], bool add = true)
     else if (add)
         __system_property_add(prop, strlen(prop), value, strlen(value));
 }
-
-void set_ro_build_prop(const std::string &prop, const std::string &value) {
-    for (const auto &source : ro_props_default_source_order) {
-        auto prop_name = "ro." + source + "build." + prop;
-        if (source == "")
-            property_override(prop_name.c_str(), value.c_str());
-        else
-            property_override(prop_name.c_str(), value.c_str(), false);
-    }
-};
 
 void check_device()
 {
@@ -139,16 +119,7 @@ void NFC_check()
 }
 
 void vendor_load_properties()
- {
-    std::string fingerprint;
-    std::string description;
-
-    fingerprint = "google/redfin/redfin:13/TQ1A.230105.001/9292298:user/release-keys";
-    description = "sdm660_64-user 10 QKQ1 72 release-keys";
-
-    set_ro_build_prop("fingerprint", fingerprint);
-    property_override("ro.build.description", description.c_str());
-    
+ {    
     check_device();
     set_avoid_gfxaccel_config();
     NFC_check();
