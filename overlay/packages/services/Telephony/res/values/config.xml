@@ -38,10 +38,8 @@
          able to prevent manual operator selection. If false, this SIM setting will be
          ignored and manual operator selection will always be available. See
          CPHS4_2.WW6, CPHS B.4.7.1 for more information -->
-    <bool name="csp_enabled_bool" value="true" />
-
-    <!-- Show Preferred Network Type options in No SIM case -->
-    <bool name="config_no_sim_display_network_modes">true</bool>
+    <!-- DEPRECATED: Use CarrierConfigManager#KEY_CSP_ENABLED_BOOL -->
+    <bool name="csp_enabled">true</bool>
 
     <!-- String indicating the package name of the device ImsService implementation for MMTEL. -->
     <string name="config_ims_mmtel_package" translatable="false">org.codeaurora.ims</string>
