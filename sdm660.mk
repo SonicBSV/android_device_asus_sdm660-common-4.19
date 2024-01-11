@@ -27,10 +27,10 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    android.hardware.audio@7.1-impl:32 \
-    android.hardware.audio.effect@7.0-impl:32 \
+    android.hardware.audio@7.1-impl \
+    android.hardware.audio.effect@7.0-impl \
     android.hardware.audio.service \
-    android.hardware.soundtrigger@2.3-impl:32
+    android.hardware.soundtrigger@2.3-impl
 
 PRODUCT_PACKAGES += \
     audio.bluetooth.default \
@@ -144,6 +144,7 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.mapper@1.0.vendor \
     vendor.qti.hardware.display.mapper@1.1.vendor \
     vendor.qti.hardware.display.mapper@2.0.vendor \
+    vendor.display.config@1.0.vendor \
     vendor.display.config@2.0
 
 # Display Device Config
@@ -200,6 +201,7 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product, $(COMMON_PATH)/gps/gps_vendor_product.mk)
 
 PRODUCT_PACKAGES += \
+    android.hardware.gnss@2.1.vendor \
     libsensorndkbridge \
     libwifi-hal-ctrl
 
@@ -307,6 +309,7 @@ PRODUCT_PACKAGES += \
     android.hardware.nfc@1.2-service
 
 PRODUCT_PACKAGES += \
+    android.hardware.secure_element@1.2.vendor \
     com.android.nfc_extras \
     NfcNci \
     SecureElement \
@@ -427,23 +430,14 @@ PRODUCT_PACKAGES += \
     libvndfwk_detect_jni.qti \
     libvndfwk_detect_jni.qti.vendor
 
-# QNS
-PRODUCT_PACKAGES += \
-    libstdc++.vendor
-
 # RIL
 PRODUCT_PACKAGES += \
-    libprotobuf-cpp-full \
     android.hardware.radio@1.5 \
     android.hardware.radio@1.5.vendor \
     android.hardware.radio.config@1.2 \
     android.hardware.radio.config@1.2.vendor \
     android.hardware.radio.deprecated@1.0 \
     android.hardware.radio.deprecated@1.0.vendor \
-    android.hardware.secure_element@1.1 \
-    android.hardware.secure_element@1.2 \
-    android.hardware.secure_element@1.1.vendor \
-    android.hardware.secure_element@1.2.vendor \
     libavservices_minijail.vendor \
     librmnetctl
 
@@ -484,6 +478,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl \
     android.hardware.sensors@1.0-service \
+    android.frameworks.sensorservice@1.0 \
     android.frameworks.sensorservice@1.0.vendor
 
 PRODUCT_COPY_FILES += \
@@ -551,8 +546,8 @@ PRODUCT_PACKAGES += \
 # Wifi
 PRODUCT_PACKAGES += \
     android.hardware.wifi.hostapd@1.0.vendor \
-    android.hardware.wifi@1.0-service \
-    android.hardware.wifi@1.5.vendor \
+    android.hardware.wifi-service \
+    android.hardware.wifi@1.6.vendor \
     hostapd \
     hostapd_cli \
     libwifi-hal-qcom \
