@@ -549,6 +549,10 @@ PRODUCT_PACKAGES += \
     android.hardware.vr@1.0-service \
     vr.sdm660
 
+# VNDK
+PRODUCT_PACKAGES += \
+    libstdc++_vendor
+
 # Wifi
 PRODUCT_PACKAGES += \
     android.hardware.wifi.hostapd@1.0.vendor \
