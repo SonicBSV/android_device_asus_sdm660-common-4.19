@@ -1,0 +1,1 @@
+allow untrusted_app_30 time_daemon:unix_stream_socket { connectto };

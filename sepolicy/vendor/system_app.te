@@ -15,3 +15,5 @@ get_prop(system_app, vendor_bluetooth_prop)
 
 # Aware
 get_prop(system_app, vendor_aware_available_prop);
+
+allow system_app sysfs_leds:dir { search };
