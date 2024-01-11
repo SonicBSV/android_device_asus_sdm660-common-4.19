@@ -33,8 +33,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
  */
 
 #define LOG_TAG "audio_hw_primary"
@@ -78,7 +76,6 @@
 #include "audio_extn.h"
 #include "voice_extn.h"
 #include "ip_hdlr_intf.h"
-#include "ultrasound.h"
 
 #include "sound/compress_params.h"
 
@@ -441,10 +438,6 @@ const char * const use_case_table[AUDIO_USECASE_MAX] = {
     [USECASE_AUDIO_RECORD_BUS_REAR_SEAT] = "rear-seat-record",
     [USECASE_AUDIO_PLAYBACK_SYNTHESIZER] = "synth-loopback",
     [USECASE_AUDIO_RECORD_ECHO_REF_EXT] = "echo-reference-external",
-
-    /* For Elliptic Ultrasound proximity sensor */
-    [USECASE_AUDIO_ULTRASOUND_RX] = "ultrasound-rx",
-    [USECASE_AUDIO_ULTRASOUND_TX] = "ultrasound-tx",
 };
 
 static const audio_usecase_t offload_usecases[] = {
@@ -1317,9 +1310,6 @@ int enable_audio_route(struct audio_device *adev,
     audio_extn_utils_send_app_type_cfg(adev, usecase);
     if (audio_extn_is_maxx_audio_enabled())
         audio_extn_ma_set_device(usecase);
-#ifdef ELLIPTIC_ULTRASOUND_ENABLED
-    if (usecase->id != USECASE_AUDIO_ULTRASOUND_TX)
-#endif
     audio_extn_utils_send_audio_calibration(adev, usecase);
     if ((usecase->type == PCM_PLAYBACK) && is_offload_usecase(usecase->id)) {
         out = usecase->stream.out;
@@ -1554,10 +1544,6 @@ int enable_snd_device(struct audio_device *adev,
                                         ST_EVENT_SND_DEVICE_BUSY);
         audio_extn_listen_update_device_status(snd_device,
                                         LISTEN_EVENT_SND_DEVICE_BUSY);
-#ifdef ELLIPTIC_ULTRASOUND_ENABLED
-        if (snd_device != SND_DEVICE_OUT_ULTRASOUND_HANDSET &&
-            snd_device != SND_DEVICE_IN_ULTRASOUND_MIC)
-#endif
         if (platform_get_snd_device_acdb_id(snd_device) < 0) {
             audio_extn_sound_trigger_update_device_status(snd_device,
                                             ST_EVENT_SND_DEVICE_FREE);
@@ -1568,6 +1554,7 @@ int enable_snd_device(struct audio_device *adev,
         audio_extn_dev_arbi_acquire(snd_device);
         audio_route_apply_and_update_path(adev->audio_route, device_name);
         amplifier_set_feedback(adev, snd_device, true);
+        audio_extn_tfa98xx_start_feedback(adev, snd_device);
 
         if (SND_DEVICE_OUT_HEADPHONES == snd_device &&
             !adev->native_playback_enabled &&
@@ -1640,6 +1627,7 @@ int disable_snd_device(struct audio_device *adev,
         } else {
             audio_route_reset_and_update_path(adev->audio_route, device_name);
             amplifier_enable_devices(snd_device, false);
+            audio_extn_tfa98xx_stop_feedback(adev, snd_device);
         }
 
         if (snd_device == SND_DEVICE_OUT_BT_A2DP) {
@@ -1899,12 +1887,6 @@ static void check_usecases_codec_backend(struct audio_device *adev,
               platform_get_snd_device_name(snd_device),
               platform_get_snd_device_name(usecase->out_snd_device),
               platform_check_backends_match(snd_device, usecase->out_snd_device));
-
-#ifdef ELLIPTIC_ULTRASOUND_ENABLED
-        if (usecase->id == USECASE_AUDIO_ULTRASOUND_RX)
-            continue;
-#endif
-
         if ((usecase->type != PCM_CAPTURE) && (usecase != uc_info) &&
                 (usecase->type != PCM_PASSTHROUGH)) {
             uc_derive_snd_device = derive_playback_snd_device(adev->platform,
@@ -2066,11 +2048,6 @@ static void check_usecases_capture_codec_backend(struct audio_device *adev,
         /*
          * TODO: Enhance below condition to handle BT sco/USB multi recording
          */
-
-#ifdef ELLIPTIC_ULTRASOUND_ENABLED
-        if (usecase->id == USECASE_AUDIO_ULTRASOUND_TX)
-            continue;
-#endif
 
         bool capture_uc_needs_routing = usecase->type != PCM_PLAYBACK && (usecase != uc_info &&
                                        (usecase->in_snd_device != snd_device || force_routing));
@@ -6907,7 +6884,7 @@ static size_t in_get_buffer_size(const struct audio_stream *stream)
     if(in->usecase == USECASE_COMPRESS_VOIP_CALL)
         return voice_extn_compress_voip_in_get_buffer_size(in);
     else if(audio_extn_compr_cap_usecase_supported(in->usecase))
-        return audio_extn_compr_cap_get_buffer_size(pcm_format_to_audio_format(in->config.format));
+        return audio_extn_compr_cap_get_buffer_size(in->config.format);
     else if(audio_extn_cin_attached_usecase(in))
         return audio_extn_cin_get_buffer_size(in);
 
@@ -8054,7 +8031,8 @@ int adev_open_output_stream(struct audio_hw_device *dev,
         if (!voice_extn_is_compress_voip_supported()) {
             if (out->sample_rate == 8000 || out->sample_rate == 16000 ||
              out->sample_rate == 32000 || out->sample_rate == 48000) {
-                out->channel_mask = config->channel_mask;
+                out->channel_mask = audio_extn_utils_is_vendor_enhanced_fwk() ?
+                                        config->channel_mask : AUDIO_CHANNEL_OUT_STEREO;
                 out->usecase = USECASE_AUDIO_PLAYBACK_VOIP;
                 out->format = AUDIO_FORMAT_PCM_16_BIT;
                 out->volume_l = INVALID_OUT_VOLUME;
@@ -9147,15 +9125,6 @@ static int adev_set_parameters(struct audio_hw_device *dev, const char *kvpairs)
         }
     }
 
-    ret = str_parms_get_int(parms, "ultrasound-sensor", &val);
-    if (ret >= 0) {
-        if (val == 1) {
-            us_start();
-        } else {
-            us_stop();
-        }
-    }
-
     amplifier_set_parameters(parms);
     audio_extn_set_parameters(adev, parms);
 done:
@@ -9979,7 +9948,7 @@ static void adev_close_input_stream(struct audio_hw_device *dev,
     }
 
     if (audio_extn_compr_cap_enabled() &&
-            audio_extn_compr_cap_format_supported(pcm_format_to_audio_format((in->config).format)))
+            audio_extn_compr_cap_format_supported(in->config.format))
         audio_extn_compr_cap_deinit();
 
     if (audio_extn_cin_attached_usecase(in))
@@ -10500,9 +10469,6 @@ static int adev_close(hw_device_t *device)
         free(device);
         adev = NULL;
     }
-
-    us_deinit();
-
     pthread_mutex_unlock(&adev_init_lock);
     enable_gcov();
     return 0;
@@ -10905,8 +10871,6 @@ static int adev_open(const hw_module_t *module, const char *name,
 
     if (amplifier_open(adev) != 0)
         ALOGE("Amplifier initialization failed");
-
-    us_init(adev);
 
     *device = &adev->device.common;
 
