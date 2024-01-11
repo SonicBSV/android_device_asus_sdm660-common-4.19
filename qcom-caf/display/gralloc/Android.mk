@@ -109,6 +109,7 @@ LOCAL_C_INCLUDES              := $(common_includes) $(kernel_includes)
 LOCAL_HEADER_LIBRARIES        := display_headers
 LOCAL_SHARED_LIBRARIES        := $(common_libs) \
                                   libhidlbase \
+                                  libhidltransport \
                                   libqdMetaData \
                                   libgrallocutils \
                                   libgralloccore \
@@ -153,6 +154,8 @@ LOCAL_SHARED_LIBRARIES        := $(common_libs) \
                                  android.hardware.graphics.allocator@3.0 \
                                  vendor.qti.hardware.display.mapperextensions@1.0 \
                                  vendor.qti.hardware.display.mapperextensions@1.1
+#Add sendorservice for HY11 packing purpose
+LOCAL_SHARED_LIBRARIES        += android.frameworks.sensorservice@1.0
 LOCAL_CFLAGS                  := -DLOG_TAG=\"qdgralloc\" $(common_flags)
 ifneq ($(TARGET_USES_GRALLOC4),false)
 LOCAL_CFLAGS                  += -DTARGET_USES_GRALLOC4
