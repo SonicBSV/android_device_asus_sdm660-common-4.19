@@ -157,7 +157,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Doze mode
 PRODUCT_PACKAGES += \
-    Doze
+    DeviceDoze
 
 # DRM
 PRODUCT_PACKAGES += \
