@@ -16,6 +16,7 @@ genfscon sysfs /devices/platform/soc/soc:qcom,cpubw             u:object_r:sysfs
 # Wakeup Nodes
 genfscon sysfs /devices/platform/soc/c1b7000.i2c/i2c-7/7-0048/wakeup/wakeup[0-80] u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/c1b7000.i2c/i2c-7/7-0048/wakeup/wakeup34 u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/c1b7000.i2c/i2c-7/7-0047/wakeup/wakeup37 u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/ca0c000.qcom,cci/ca0c000.qcom,cci:qcom,camera@1/video4linux/video3/wakeup58 u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/ca0c000.qcom,cci/ca0c000.qcom,cci:qcom,camera@2/video4linux/video4/wakeup59 u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/ca0c000.qcom,cci/ca0c000.qcom,cci:qcom,camera@2/video4linux/video4/wakeup60 u:object_r:sysfs_wakeup:s0
@@ -23,7 +24,9 @@ genfscon sysfs /devices/platform/soc/ca0c000.qcom,cci/ca0c000.qcom,cci:qcom,came
 genfscon sysfs /devices/platform/soc/ca0c000.qcom,cci/ca0c000.qcom,cci:qcom,camera@0/video4linux/video2/wakeup58 u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/ca0c000.qcom,cci/ca0c000.qcom,cci:qcom,camera@1/video4linux/video3/wakeup59 u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/ca0c000.qcom,cci/ca0c000.qcom,cci:qcom,camera@2/video4linux/video4/wakeup61 u:object_r:sysfs_wakeup:s0
-
+genfscon sysfs /devices/platform/soc/ca0c000.qcom,cci/ca0c000.qcom,cci:qcom,camera@1/video4linux/video3/wakeup62 u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/ca0c000.qcom,cci/ca0c000.qcom,cci:qcom,camera@2/video4linux/video4/wakeup63 u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/ca0c000.qcom,cci/ca0c000.qcom,cci:qcom,camera@0/video4linux/video2/wakeup61 u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/soc/ca0c000.qcom,cci/ca0c000.qcom,cci:qcom,camera@[0-9]/video4linux/video[0-9]/wakeup[0-80] u:object_r:sysfs_wakeup:s0
 
 # DeviceSettings
