@@ -39,6 +39,9 @@ vendor.gralloc.enable_fb_ubwc=1
 vendor.display.disable_skip_validate=1
 persist.hwc.mdpcomp.enable=true
 
+# fastbootd
+ro.fastbootd.available=true
+
 # Fling
 ro.min.fling_velocity=160
 ro.max.fling_velocity=20000
