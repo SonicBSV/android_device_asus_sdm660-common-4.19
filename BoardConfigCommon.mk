@@ -152,7 +152,6 @@ BOARD_KERNEL_CMDLINE += loop.max_part=7
 BOARD_KERNEL_CMDLINE := androidboot.boot_devices=soc/c0c4000.sdhci
 BOARD_KERNEL_CMDLINE += printk.devkmsg=on
 BOARD_KERNEL_CMDLINE += usbcore.autosuspend=7
-BOARD_KERNEL_CMDLINE += kpti=off
 BOARD_KERNEL_CMDLINE += kernelsu.enabled=1
 #BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
